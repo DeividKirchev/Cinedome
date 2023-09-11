@@ -1,20 +1,20 @@
-import Link from "next/link";
-
+import classes from "./HeaderNavigation.module.css";
+import NavLink from "./NavLink";
 function HeaderNavigation() {
   return (
-    <nav>
+    <nav className={classes.navigation}>
       <ul>
         <li>
-          <Link href="/">Home</Link>
+          <NavLink href="/">Home</NavLink>
         </li>
         <li>
-          <Link href="/schedule">Schedule</Link>
+          <NavLink href="/schedule">Schedule</NavLink>
         </li>
         <li>
-          <Link href="/movies">Movies</Link>
+          <NavLink href="/movies">Movies</NavLink>
         </li>
         <li>
-          <Link href="/comming-up">Comming up</Link>
+          <NavLink href="/coming-up">Coming up</NavLink>
         </li>
       </ul>
     </nav>

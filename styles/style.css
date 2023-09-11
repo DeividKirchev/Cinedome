@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+:root {
+  --font-family: "Josefin Sans", "Verdana", sans-serif;
+  --blue-color: #45c4af;
+  --green-color: #9aeba3;
+  --light-green-color: #dafcb9;
+  --dark-blue-color: #012030;
+}
+body {
+  line-height: 1.5;
+  background-color: #fff;
+  font-family: var(--font-family);
+  font-size: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: var(--grey-color);
+  padding: 0px;
+  margin: 0px;
+}
+#Body {
+  min-width: 320px;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary,
+hr {
+  display: block;
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+progress {
+  vertical-align: baseline;
+}
+template,
+[hidden] {
+  display: none;
+}
+img {
+  border: 0;
+  max-width: 100%;
+}
+body {
+  background-color: #232931;
+  padding: 0;
+  margin: 0;
+}
+header,
+main,
+footer {
+  padding: 0;
+  margin: 0;
+}
+.wrap {
+  max-width: 1200px;
+  width: 98%;
+}

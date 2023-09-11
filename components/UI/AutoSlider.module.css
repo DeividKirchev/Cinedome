@@ -1,0 +1,25 @@
+.container {
+  overflow: hidden;
+  max-width: 100vw;
+  height: 600px;
+}
+
+.image {
+  width: 100%;
+  z-index: 0;
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .image {
+    scale: 2;
+  }
+  .container {
+    height: 300px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .image {
+    scale: 4;
+  }
+}

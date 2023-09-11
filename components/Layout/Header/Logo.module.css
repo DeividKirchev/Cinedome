@@ -1,0 +1,7 @@
+.logo {
+  flex-shrink: 0;
+}
+.logo img {
+  height: 35px;
+  width: 263px;
+}

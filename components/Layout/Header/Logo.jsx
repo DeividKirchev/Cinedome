@@ -1,9 +1,9 @@
 import Link from "next/link";
-import logoImage from "../../../public/logo.png";
+import classes from "./Logo.module.css";
 function Logo() {
   return (
-    <Link href="/">
-      <img src={logoImage} />
+    <Link scroll={false} className={classes.logo} href="/">
+      <img src="/logo.png" alt="Cineland" />
     </Link>
   );
 }

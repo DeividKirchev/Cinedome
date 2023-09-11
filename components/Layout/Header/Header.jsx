@@ -1,13 +1,13 @@
 import Logo from "./Logo";
 import HeaderNavigation from "./HeaderNavigation";
-import BookLink from "./BookButton";
-
+import TicketsLink from "./TicketsLink";
+import classes from "./Header.module.css";
 function Header() {
   return (
-    <header>
+    <header className={classes.header}>
       <Logo />
       <HeaderNavigation />
-      <BookLink />
+      <TicketsLink />
     </header>
   );
 }
