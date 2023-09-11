@@ -1,0 +1,17 @@
+.button,
+.button svg {
+  height: 50px;
+  width: 50px;
+}
+.button {
+  display: none;
+  padding: 0;
+  background: transparent;
+  border: none;
+  z-index: 2;
+}
+@media screen and (max-width: 910px) {
+  .button {
+    display: block;
+  }
+}

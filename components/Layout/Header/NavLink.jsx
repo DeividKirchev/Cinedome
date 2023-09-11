@@ -5,18 +5,22 @@ import { motion } from "framer-motion";
 function NavLink(props) {
   const router = useRouter();
   const isActive = router.pathname == props.href;
+  function clickHandler() {
+    props.onClick(false);
+  }
   return (
     <>
       <Link
         scroll={false}
         className={`${classes.link} ${isActive && classes.active}`}
         href={props.href}
+        onClick={clickHandler}
       >
         {props.children}
       </Link>
       {isActive && (
         <motion.hr
-          layoutId="navigationUnderline"
+          layoutId={"navigationUnderline" + props.id}
           className={classes.activeLine}
         />
       )}

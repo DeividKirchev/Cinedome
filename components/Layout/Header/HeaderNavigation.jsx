@@ -1,23 +1,64 @@
+import { AnimatePresence, motion } from "framer-motion";
 import classes from "./HeaderNavigation.module.css";
 import NavLink from "./NavLink";
-function HeaderNavigation() {
+function HeaderNavigation({ isNavShown, onClick = undefined }) {
+  const links = [
+    {
+      to: "/",
+      title: "Home",
+    },
+    {
+      to: "/schedule",
+      title: "Schedule",
+    },
+    {
+      to: "/movies",
+      title: "Movies",
+    },
+    {
+      to: "/coming-up",
+      title: "Coming up",
+    },
+  ];
+  const listNav = (
+    <ul>
+      {links.map((item) => (
+        <li key={item.to + "nav"}>
+          <NavLink id="Nav" href={item.to}>
+            {item.title}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  );
+  const listMob = (
+    <ul>
+      {links.map((item) => (
+        <li key={item.to + "nav"}>
+          <NavLink onClick={onClick} id="Mob" href={item.to}>
+            {item.title}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  );
   return (
-    <nav className={classes.navigation}>
-      <ul>
-        <li>
-          <NavLink href="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink href="/schedule">Schedule</NavLink>
-        </li>
-        <li>
-          <NavLink href="/movies">Movies</NavLink>
-        </li>
-        <li>
-          <NavLink href="/coming-up">Coming up</NavLink>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <nav className={classes.navigation}>{listNav}</nav>
+      <AnimatePresence>
+        {isNavShown && (
+          <motion.nav
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ height: 0, paddingTop: 0, paddingBottom: 0 }}
+            transition={{ duration: 0.5 }}
+            className={classes.sidebar}
+          >
+            {listMob}
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 

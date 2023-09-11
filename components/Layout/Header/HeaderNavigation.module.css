@@ -1,21 +1,54 @@
-.navigation {
+.navigation,
+.sidebar {
   height: 100%;
   padding-top: 10px;
 }
-.navigation ul {
+.navigation ul,
+.sidebar ul {
   display: flex;
   justify-content: center;
   height: 100%;
   margin: 0;
+  list-style-type: none;
 }
-.navigation ul li {
+.navigation ul li,
+.sidebar ul li {
   display: flex;
   padding: 0 15px;
   position: relative;
   height: 100%;
 }
+.sidebar {
+  display: none;
+}
 @media screen and (max-width: 910px) {
   .navigation {
     display: none;
+  }
+  .sidebar {
+    position: absolute;
+    top: 0;
+    display: flex;
+    left: 50%;
+    flex-direction: column;
+    height: fit-content;
+    transform: translateX(-50%);
+    background-color: rgba(57, 62, 70, 0.85);
+    width: 100%;
+    padding: 90px 0 30px;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .sidebar ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+  }
+  .sidebar ul li a {
+    font-size: 30px;
   }
 }
