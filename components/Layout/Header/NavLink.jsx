@@ -6,7 +6,9 @@ function NavLink(props) {
   const router = useRouter();
   const isActive = router.pathname == props.href;
   function clickHandler() {
-    props.onClick(false);
+    if (props.onClick) {
+      props.onClick(false);
+    }
   }
   return (
     <>
