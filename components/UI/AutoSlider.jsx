@@ -6,12 +6,13 @@ function AutoSlider(props) {
   const images = props.images;
   setTimeout(() => {
     setCurrImageID((prevState) => {
-      console.log(prevState === images.length - 1 ? 0 : +prevState + 1);
+      //console.log(prevState === images.length - 1 ? 0 : +prevState + 1);
       return prevState === images.length - 1 ? 0 : +prevState + 1;
     });
   }, 8000);
   return (
     <AnimatePresence mode="popLayout" initial={false}>
+      <div className={classes.container}></div>
       <motion.img
         key={currImageID}
         initial={{ opacity: 0 }}

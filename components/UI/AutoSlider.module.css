@@ -4,3 +4,16 @@
   z-index: 0;
   position: relative;
 }
+@media screen and (max-width: 630px) {
+  .image {
+    height: 300px;
+  }
+}
+@media screen and (max-width: 430px) {
+  .image {
+    height: 200px;
+  }
+  .container {
+    margin-top: 60px;
+  }
+}
