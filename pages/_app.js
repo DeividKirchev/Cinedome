@@ -1,7 +1,9 @@
 import { AnimatePresence } from "framer-motion";
 import Header from "../components/Layout/Header/Header";
 import "../styles/style.css";
+import { useNextCssRemovalPrevention } from "@madeinhaus/nextjs-page-transition";
 export default function MyApp({ Component, pageProps, router }) {
+  useNextCssRemovalPrevention();
   return (
     <>
       <Header />

@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@madeinhaus/nextjs-page-transition": "^3.1.1",
     "framer-motion": "^10.5.0",
     "next": "latest",
     "react": "18.2.0",
