@@ -3,7 +3,7 @@ import Header from "../components/Layout/Header/Header";
 import "../styles/style.css";
 import { fixTimeoutTransition } from "../components/UI/fixTimeoutTransition";
 export default function MyApp({ Component, pageProps, router }) {
-  fixTimeoutTransition(500);
+  fixTimeoutTransition(1000);
   return (
     <>
       <Header />
