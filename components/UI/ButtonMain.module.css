@@ -1,0 +1,17 @@
+.btnMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  text-decoration: none;
+  background: linear-gradient(#4ecca3, #4ecca3 50%, #eee 50%, #eee);
+  background-size: 100% 200%;
+  transition: background 0.5s, color 0.5s;
+  border-radius: 10px;
+  padding: 5px 20px 2px;
+  font-size: 22px;
+}
+.btnMain:hover {
+  background-position: 100% 100%;
+  color: #4ecca3;
+}

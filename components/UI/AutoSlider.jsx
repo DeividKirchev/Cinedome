@@ -12,19 +12,20 @@ function AutoSlider(props) {
   }, 8000);
   return (
     <AnimatePresence mode="popLayout" initial={false}>
-      <div className={classes.container}></div>
-      <motion.img
-        key={currImageID}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-        }}
-        exit={{ opacity: 0, position: "absolute" }}
-        transition={{ duration: 1 }}
-        className={classes.image}
-        src={`/${images[currImageID]}`}
-        alt="The best movies from the whole world!"
-      />
+      <div className={classes.container}>
+        <motion.img
+          key={currImageID}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+          }}
+          exit={{ opacity: 0, position: "absolute" }}
+          transition={{ duration: 1 }}
+          className={classes.image}
+          src={`/${images[currImageID]}`}
+          alt="The best movies from the whole world!"
+        />
+      </div>
     </AnimatePresence>
   );
 }

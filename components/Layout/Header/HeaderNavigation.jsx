@@ -1,25 +1,25 @@
 import { AnimatePresence, motion } from "framer-motion";
 import classes from "./HeaderNavigation.module.css";
 import NavLink from "./NavLink";
+const links = [
+  {
+    to: "/",
+    title: "Home",
+  },
+  {
+    to: "/schedule",
+    title: "Schedule",
+  },
+  {
+    to: "/movies",
+    title: "Movies",
+  },
+  {
+    to: "/coming-up",
+    title: "Coming up",
+  },
+];
 function HeaderNavigation({ isNavShown, onClick = undefined }) {
-  const links = [
-    {
-      to: "/",
-      title: "Home",
-    },
-    {
-      to: "/schedule",
-      title: "Schedule",
-    },
-    {
-      to: "/movies",
-      title: "Movies",
-    },
-    {
-      to: "/coming-up",
-      title: "Coming up",
-    },
-  ];
   const listNav = (
     <ul>
       {links.map((item) => (

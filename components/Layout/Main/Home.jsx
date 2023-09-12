@@ -2,7 +2,6 @@ import AutoSlider from "../../UI/AutoSlider";
 import PageTransition from "../PageTransition";
 function Home() {
   const images = ["cinema.jpg", "movie-set.jpg", "popcorn.jpg"];
-
   return (
     <PageTransition isToTop={false}>
       <AutoSlider images={images} />

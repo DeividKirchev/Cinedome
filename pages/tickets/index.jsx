@@ -1,5 +1,5 @@
-function Tickets() {
+function TicketsPage() {
   return <></>;
 }
 
-export default Tickets;
+export default TicketsPage;

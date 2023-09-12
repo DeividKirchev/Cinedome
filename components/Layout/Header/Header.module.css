@@ -10,7 +10,7 @@
   width: 100%;
   background: linear-gradient(
     to right,
-    rgba(35, 41, 49, 0.7),
+    rgba(35, 41, 49, 1),
     rgba(35, 41, 49, 0.3)
   );
   z-index: 99;
