@@ -7,7 +7,9 @@
   },
   "dependencies": {
     "@madeinhaus/nextjs-page-transition": "^3.1.1",
+    "@tanstack/react-query": "^4.35.0",
     "framer-motion": "^10.5.0",
+    "mongodb": "^6.0.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"

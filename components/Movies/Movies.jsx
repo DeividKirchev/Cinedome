@@ -4,7 +4,7 @@ import Link from "next/link";
 import classes from "./Movies.module.css";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-function Movies() {
+function Movies({ movies }) {
   const [search, setSearch] = useState("");
   function searchHandler(search) {
     setSearch(search);
@@ -22,7 +22,7 @@ function Movies() {
       </div>
       <MoviesSearch searchHandler={searchHandler} />
       <AnimatePresence>
-        <MoviesList search={search} />
+        <MoviesList movies={movies} search={search} />
       </AnimatePresence>
     </>
   );
