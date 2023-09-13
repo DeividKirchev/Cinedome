@@ -10,7 +10,7 @@ export async function getAllMovies() {
     ...rest,
     id: _id.toString(),
   }));
-  console.log(newMovies);
+  //console.log(newMovies);
   return newMovies;
 }
 export async function getAllSchedules() {
@@ -24,6 +24,6 @@ export async function getAllSchedules() {
     ...rest,
     id: _id.toString(),
   }));
-  console.log(newSchedules);
+  //console.log(newSchedules);
   return newSchedules;
 }

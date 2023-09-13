@@ -1,5 +1,5 @@
 import PageTransition from "../../components/Layout/PageTransition";
-import Movies from "../../components/Movies/Movies";
+import Movies from "../../components/Layout/Main/Movies";
 import { getAllMovies } from "../../db/movies";
 
 function MoviesPage(props) {

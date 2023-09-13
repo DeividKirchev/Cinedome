@@ -1,3 +1,4 @@
+import Head from "next/head";
 import MovieItem from "./MovieItem";
 import classes from "./MoviesList.module.css";
 import { AnimatePresence, motion } from "framer-motion";
@@ -49,24 +50,38 @@ function MoviesList({ search, movies }) {
   //console.log(DUMMY_SCHEDULE);
   //console.log(filtered);
   return (
-    <motion.ul exit={{ opacity: 0 }} className={classes.list}>
-      <AnimatePresence>
-        {filtered.map((movie, i) => (
-          <motion.li
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { type: "linear" } }}
-            transition={{ type: "spring", delay: i * 0.1 }}
-            key={movie.id}
-          >
-            <MovieItem
-              movie={movie}
-              schedule={filteredSchedule.filter((s) => s.movieID === movie.id)}
-            />
-          </motion.li>
+    <>
+      <Head>
+        {filtered.map((movie) => (
+          <link
+            key={movie.image}
+            rel="preload"
+            href={`${movie.image}`}
+            as="image"
+          />
         ))}
-      </AnimatePresence>
-    </motion.ul>
+      </Head>
+      <motion.ul exit={{ opacity: 0 }} className={classes.list}>
+        <AnimatePresence>
+          {filtered.map((movie, i) => (
+            <motion.li
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { type: "linear" } }}
+              transition={{ type: "spring", delay: i * 0.1 }}
+              key={movie.id}
+            >
+              <MovieItem
+                movie={movie}
+                schedule={filteredSchedule.filter(
+                  (s) => s.movieID === movie.id
+                )}
+              />
+            </motion.li>
+          ))}
+        </AnimatePresence>
+      </motion.ul>
+    </>
   );
 }
 

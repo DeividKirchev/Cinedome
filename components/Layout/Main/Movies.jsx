@@ -1,5 +1,5 @@
-import MoviesList from "./MoviesList";
-import MoviesSearch from "./Search/MoviesSearch";
+import MoviesList from "../../Movies/MoviesList";
+import MoviesSearch from "../../Movies/Search/MoviesSearch";
 import Link from "next/link";
 import classes from "./Movies.module.css";
 import { useState } from "react";

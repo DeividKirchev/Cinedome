@@ -12,4 +12,6 @@
   display: flex;
   justify-content: center;
   column-gap: 100px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 30px;
 }
