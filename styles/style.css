@@ -96,3 +96,8 @@ h1 {
   color: #eee;
   padding-top: 30px;
 }
+@media screen and (max-width: 768px) {
+  .wrap {
+    width: 96%;
+  }
+}

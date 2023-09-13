@@ -14,7 +14,7 @@ function NavLink(props) {
     <>
       <Link
         scroll={false}
-        className={`${classes.link} ${isActive && classes.active}`}
+        className={`${classes.link} ${isActive ? classes.active : ""}`}
         href={props.href}
         onClick={clickHandler}
       >
@@ -22,7 +22,7 @@ function NavLink(props) {
       </Link>
       {isActive && (
         <motion.hr
-          layoutId={"navigationUnderline" + props.id}
+          layoutId={props.navId === "Mob" ? null : "navigationUnderline"}
           className={classes.activeLine}
         />
       )}

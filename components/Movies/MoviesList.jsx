@@ -4,7 +4,7 @@ import classes from "./MoviesList.module.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-function MoviesList({ search, movies }) {
+function MoviesList({ search, movies, schedule }) {
   const [schedules, setSchedules] = useState([]);
   let filtered = movies;
   if (search) {
@@ -25,7 +25,6 @@ function MoviesList({ search, movies }) {
   }
   const now = new Date();
   const ids = filtered.map((movie) => movie.id);
-
   const fetchSchedule = () => {
     fetch("/api/schedule")
       .then((response) => {
@@ -37,9 +36,12 @@ function MoviesList({ search, movies }) {
         );
       });
   };
-
   useEffect(() => {
-    fetchSchedule();
+    if (!schedule) {
+      fetchSchedule();
+    } else {
+      setSchedules(schedule.map((s) => ({ ...s, date: new Date(s.date) })));
+    }
   }, []);
   ///console.log(schedules);
   //console.log(schedules);
@@ -65,10 +67,16 @@ function MoviesList({ search, movies }) {
         <AnimatePresence>
           {filtered.map((movie, i) => (
             <motion.li
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { type: "linear" } }}
+              initial="hidden"
+              // animate="visible"
+              whileInView="visible"
+              viewport={{ once: true }}
+              exit="hidden"
               transition={{ type: "spring", delay: i * 0.1 }}
+              variants={{
+                visible: { opacity: 1 },
+                hidden: { opacity: 0 },
+              }}
               key={movie.id}
             >
               <MovieItem

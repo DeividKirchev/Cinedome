@@ -24,7 +24,7 @@ function HeaderNavigation({ isNavShown, onClick = undefined }) {
     <ul>
       {links.map((item) => (
         <li key={item.to + "nav"}>
-          <NavLink id="Nav" href={item.to}>
+          <NavLink navId={"Nav"} href={item.to}>
             {item.title}
           </NavLink>
         </li>
@@ -35,7 +35,7 @@ function HeaderNavigation({ isNavShown, onClick = undefined }) {
     <ul>
       {links.map((item) => (
         <li key={item.to + "nav"}>
-          <NavLink onClick={onClick} id="Mob" href={item.to}>
+          <NavLink onClick={onClick} navId={"Mob"} href={item.to}>
             {item.title}
           </NavLink>
         </li>

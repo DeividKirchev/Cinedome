@@ -1,10 +1,21 @@
-import Link from "next/link";
 import classes from "./MovieItem.module.css";
 import { motion } from "framer-motion";
 import ButtonMain from "../UI/ButtonMain";
+import { useRouter } from "next/router";
 function MovieItem(props) {
   const { movie } = props;
   //console.log(props.schedule);
+  const { push } = useRouter();
+
+  function clickHandler() {
+    push(`/movies/${props.movie.id}`);
+  }
+  const now = new Date();
+  const nextWeek = new Date(new Date().setDate(now.getDate() + 7));
+  const filtered = props.schedule.filter((s) => {
+    const newDate = new Date(s.date);
+    return newDate >= now && newDate <= nextWeek;
+  });
   return (
     <motion.div
       whileHover={{
@@ -14,10 +25,11 @@ function MovieItem(props) {
         type: "spring",
       }}
       className={classes.movie}
+      onClick={clickHandler}
     >
       <img src={movie.image} alt={movie.title} />
       <div className={classes.overlay}>
-        {props.schedule.length > 0 && (
+        {filtered.length > 0 && (
           <ButtonMain isLink={true} href={`/tickets/${movie.id}`}>
             Tickets
           </ButtonMain>

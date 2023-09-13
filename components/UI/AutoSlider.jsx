@@ -3,6 +3,7 @@ import classes from "./AutoSlider.module.css";
 import { useState } from "react";
 function AutoSlider(props) {
   const [currImageID, setCurrImageID] = useState(0);
+
   const images = props.images;
   setTimeout(() => {
     setCurrImageID((prevState) => {
@@ -11,15 +12,14 @@ function AutoSlider(props) {
     });
   }, 8000);
   return (
-    <AnimatePresence mode="popLayout" initial={false}>
+    <AnimatePresence initial={false}>
       <div className={classes.container}>
         <motion.img
           key={currImageID}
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.2 }}
           animate={{
             opacity: 1,
           }}
-          exit={{ opacity: 0, position: "absolute" }}
           transition={{ duration: 1 }}
           className={classes.image}
           src={`/${images[currImageID]}`}
