@@ -12,19 +12,6 @@ function MoviesList({ search, movies, schedule }) {
       movie.title.toLowerCase().includes(search.trim().toLowerCase())
     );
   }
-  if (filtered.length === 0) {
-    return (
-      <motion.div
-        initial={{ y: -20 }}
-        animate={{ y: 0 }}
-        className={classes.noMovies}
-      >
-        No movies found.
-      </motion.div>
-    );
-  }
-  const now = new Date();
-  const ids = filtered.map((movie) => movie.id);
   const fetchSchedule = () => {
     fetch("/api/schedule")
       .then((response) => {
@@ -43,6 +30,19 @@ function MoviesList({ search, movies, schedule }) {
       setSchedules(schedule.map((s) => ({ ...s, date: new Date(s.date) })));
     }
   }, []);
+  if (filtered.length === 0) {
+    return (
+      <motion.div
+        initial={{ y: -20 }}
+        animate={{ y: 0 }}
+        className={classes.noMovies}
+      >
+        No movies found.
+      </motion.div>
+    );
+  }
+  const now = new Date();
+  const ids = filtered.map((movie) => movie.id);
   ///console.log(schedules);
   //console.log(schedules);
   const filteredSchedule = schedules.filter(
@@ -72,7 +72,7 @@ function MoviesList({ search, movies, schedule }) {
               whileInView="visible"
               viewport={{ once: true }}
               exit="hidden"
-              transition={{ type: "spring", delay: i * 0.1 }}
+              transition={{ delay: i * 0.1 }}
               variants={{
                 visible: { opacity: 1 },
                 hidden: { opacity: 0 },

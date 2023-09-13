@@ -48,3 +48,8 @@
   font-style: normal;
   color: #4ecca3;
 }
+@media screen and (max-width: 768px) {
+  .movie:hover .overlay {
+    display: none;
+  }
+}

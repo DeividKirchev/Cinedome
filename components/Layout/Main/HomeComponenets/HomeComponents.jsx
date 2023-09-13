@@ -31,7 +31,7 @@ function HomeComponents({ data }) {
         }}
         className={classes.reverse + " " + classes.h3}
       >
-        Upcoming
+        Coming soon
       </h3>
       <Upcoming data={data} />
     </div>
