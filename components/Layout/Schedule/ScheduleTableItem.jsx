@@ -4,19 +4,18 @@ import { useRouter } from "next/router";
 function ScheduleTableItem({ item }) {
   const { movie, schedule } = item;
   const { push } = useRouter();
-  function clickHandler(id) {
-    push("/movies/" + id);
+  function clickHandler() {
+    push("/movies/" + item.movie.id);
   }
   return (
-    <li
-      onClick={clickHandler.bind(null, item.movie.id)}
-      className={classes.item}
-    >
+    <li className={classes.item}>
       <span className={classes.date}>
         {new Date(schedule.date).toLocaleTimeString("en-US")}
       </span>
-      <img src={movie.image} alt={movie.title} />
-      <h2 className={classes.title}>{movie.title}</h2>
+      <img onClick={clickHandler} src={movie.image} alt={movie.title} />
+      <h2 onClick={clickHandler} className={classes.title}>
+        {movie.title}
+      </h2>
       <div className={classes.prices}>
         <span>
           Normal Ticket

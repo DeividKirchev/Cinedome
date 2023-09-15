@@ -7,15 +7,18 @@ function MovieItem(props) {
   //console.log(props.schedule);
   const { push } = useRouter();
 
-  function clickHandler() {
-    push(`/movies/${props.movie.id}`);
-  }
   const now = new Date();
   const nextWeek = new Date(new Date().setDate(now.getDate() + 7));
   const filtered = props.schedule.filter((s) => {
     const newDate = new Date(s.date);
     return newDate >= now && newDate <= nextWeek;
   });
+  function clickHandler() {
+    if (filtered.length > 0) push(`/tickets/movie/${props.movie.id}`);
+    else {
+      push(`/movies/${props.movie.id}`);
+    }
+  }
   return (
     <motion.div
       whileHover={{
@@ -30,7 +33,7 @@ function MovieItem(props) {
       <img src={movie.image} alt={movie.title} />
       <div className={classes.overlay}>
         {filtered.length > 0 && (
-          <ButtonMain isLink={true} href={`/tickets/${movie.id}`}>
+          <ButtonMain isLink={true} href={`/tickets/movie/${movie.id}`}>
             Tickets
           </ButtonMain>
         )}

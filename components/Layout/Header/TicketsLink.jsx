@@ -10,7 +10,7 @@ function TicketsLink() {
       }}
       transition={{ type: "spring", stiffness: 500 }}
     >
-      <Link href="/tickets">Tickets</Link>
+      <Link href="/schedule">Tickets</Link>
     </motion.div>
   );
 }

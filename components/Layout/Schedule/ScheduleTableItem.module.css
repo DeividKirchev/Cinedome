@@ -2,7 +2,7 @@
   display: flex;
   border-bottom: 3px solid #eee;
   height: 100%;
-  cursor: pointer;
+  text-decoration: none;
 }
 .item:hover {
   background: rgba(255, 255, 255, 0.1);
@@ -14,6 +14,11 @@
 .item img {
   height: 150px;
   margin: 15px auto;
+  cursor: pointer;
+}
+.item img:hover + .title,
+.title:hover {
+  text-decoration: underline;
 }
 .item:last-of-type {
   border-bottom: none;
@@ -36,6 +41,7 @@
   padding: 15px;
   color: #4ecca3;
   flex-grow: 1;
+  cursor: pointer;
 }
 .link {
   height: 50px;
