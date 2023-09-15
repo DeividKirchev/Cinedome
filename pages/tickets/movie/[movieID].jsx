@@ -25,7 +25,7 @@ function MovieTicketsPage({ data }) {
 export async function getStaticPaths() {
   const movies = await getAllMovies();
   return {
-    fallback: false,
+    fallback: true,
     paths: movies.map((m) => ({
       params: { movieID: m.id },
     })),

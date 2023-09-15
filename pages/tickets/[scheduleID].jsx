@@ -24,7 +24,7 @@ function TicketsPage({ data }) {
 export async function getStaticPaths() {
   const schedule = await getAllSchedules();
   return {
-    fallback: false,
+    fallback: true,
     paths: schedule.map((s) => ({
       params: { scheduleID: s.id },
     })),
