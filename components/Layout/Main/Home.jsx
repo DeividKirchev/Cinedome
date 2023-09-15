@@ -9,7 +9,7 @@ function Home(props) {
   const { scrollY } = useScroll();
   const opacityImage = useTransform(scrollY, [0, 250], [1, 0]);
   const yImage = useTransform(scrollY, [0, 200], [0, -100]);
-  const scaleText = useTransform(scrollY, [0, 200], [1, 1.5]);
+  const scaleText = useTransform(scrollY, [0, 150], [1, 1.5]);
   return (
     <>
       <Head>

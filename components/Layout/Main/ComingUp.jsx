@@ -21,7 +21,7 @@ function ComingUp({ data }) {
   const ids = filteredSchedule.map((s) => s.movieID);
   const filteredMovies = movies.filter((movie) => ids.includes(movie.id));
   return (
-    <>
+    <div className="wrap">
       <h1>Upcoming Movies</h1>
       <div className={classes.navigation}>
         <Link href="/schedule" scroll={false} className={classes.link}>
@@ -39,7 +39,7 @@ function ComingUp({ data }) {
           search={search}
         />
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 

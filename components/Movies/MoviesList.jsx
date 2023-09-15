@@ -72,7 +72,7 @@ function MoviesList({ search, movies, schedule }) {
               whileInView="visible"
               viewport={{ once: true }}
               exit="hidden"
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.1 + 0.2 }}
               variants={{
                 visible: { opacity: 1 },
                 hidden: { opacity: 0 },
