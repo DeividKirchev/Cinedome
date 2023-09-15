@@ -1,0 +1,33 @@
+.seats {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.seats > p {
+  text-align: center;
+  font-weight: 700;
+  color: #4ecca3;
+  font-style: italic;
+  font-size: 30px;
+  border-top: 5px solid #4ecca3;
+  width: 500px;
+}
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.button {
+  display: flex;
+  height: 100%;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  text-decoration: none;
+  background-color: #4ecca3;
+  border-radius: 10px;
+  padding: 5px 20px 2px;
+  font-size: 28px;
+  border: none;
+}

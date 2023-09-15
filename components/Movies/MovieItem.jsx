@@ -28,9 +28,8 @@ function MovieItem(props) {
         type: "spring",
       }}
       className={classes.movie}
-      onClick={clickHandler}
     >
-      <img src={movie.image} alt={movie.title} />
+      <img src={movie.image} alt={movie.title} onClick={clickHandler} />
       <div className={classes.overlay}>
         {filtered.length > 0 && (
           <ButtonMain isLink={true} href={`/tickets/movie/${movie.id}`}>

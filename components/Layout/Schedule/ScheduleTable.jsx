@@ -1,9 +1,12 @@
 import ScheduleTableItem from "./ScheduleTableItem";
 import classes from "./ScheduleTable.module.css";
-function ScheduleTable({ data }) {
+function ScheduleTable({ data, showMissing = true }) {
   //console.log(data);
   const result = [];
   Object.keys(data).forEach(function (key, index) {
+    if (!showMissing && data[key].length === 0) {
+      return;
+    }
     result.push(
       <div key={key} className={classes.container}>
         <span className={classes.date}>{key}</span>

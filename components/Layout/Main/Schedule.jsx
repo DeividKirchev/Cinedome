@@ -1,6 +1,6 @@
 import ScheduleTable from "../Schedule/ScheduleTable";
 import classes from "./Schedule.module.css";
-function Schedule({ data }) {
+function Schedule({ data, showMissing = true }) {
   const { movies, schedule } = data;
   // console.log(movies);
   // console.log(schedule);
@@ -39,7 +39,7 @@ function Schedule({ data }) {
   return (
     <div className="wrap">
       <h1 className={classes.h1}>Schedule for {fromTo}</h1>
-      <ScheduleTable data={result} />
+      <ScheduleTable data={result} showMissing={showMissing} />
     </div>
   );
 }

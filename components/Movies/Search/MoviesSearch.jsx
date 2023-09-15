@@ -3,13 +3,14 @@ import classes from "./MoviesSearch.module.css";
 import { useRef } from "react";
 function MoviesSearch({ searchHandler }) {
   const ref = useRef();
-  function clickHandler() {
+  function clickHandler(e) {
+    e.preventDefault();
     searchHandler(ref.current.value);
   }
   return (
     <div className={classes.search}>
       <label htmlFor="moviesSearch">Search by title</label>
-      <div className={classes.input}>
+      <form className={classes.input}>
         <input
           ref={ref}
           type="search"
@@ -19,7 +20,7 @@ function MoviesSearch({ searchHandler }) {
         <button onClick={clickHandler}>
           <SearchIcon />
         </button>
-      </div>
+      </form>
     </div>
   );
 }
