@@ -3,6 +3,9 @@ import PageTransition from "../../../components/Layout/PageTransition";
 import { getAllMovies, getAllSchedules } from "../../../db/movies";
 function MovieTicketsPage({ data }) {
   //console.log(data.schedule);
+  if (!data.schedule || !data.movies) {
+    return <></>;
+  }
   try {
     data.schedule = JSON.parse(data.schedule);
     data.schedule = data.schedule
@@ -22,7 +25,7 @@ function MovieTicketsPage({ data }) {
 export async function getStaticPaths() {
   const movies = await getAllMovies();
   return {
-    fallback: true,
+    fallback: false,
     paths: movies.map((m) => ({
       params: { movieID: m.id },
     })),

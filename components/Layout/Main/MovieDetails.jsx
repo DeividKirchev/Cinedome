@@ -1,7 +1,9 @@
 import classes from "./MovieDetails.module.css";
 function MovieDetails({ movie }) {
   //console.log(movie);
-
+  if (!movie) {
+    return <p>No such movie found.</p>;
+  }
   return (
     <div className="wrap">
       <article className={classes.article}>

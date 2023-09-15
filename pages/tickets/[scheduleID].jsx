@@ -5,6 +5,9 @@ import { getAllSchedules } from "../../db/movies";
 import { QueryClient } from "@tanstack/react-query";
 const client = new QueryClient();
 function TicketsPage({ data }) {
+  if (!data.schedule) {
+    return <></>;
+  }
   //console.log(data.schedule);
   try {
     data.schedule = JSON.parse(data.schedule);
@@ -21,7 +24,7 @@ function TicketsPage({ data }) {
 export async function getStaticPaths() {
   const schedule = await getAllSchedules();
   return {
-    fallback: true,
+    fallback: false,
     paths: schedule.map((s) => ({
       params: { scheduleID: s.id },
     })),
