@@ -8,9 +8,11 @@
   "dependencies": {
     "@madeinhaus/nextjs-page-transition": "^3.1.1",
     "@tanstack/react-query": "^4.35.0",
+    "dotenv": "^16.3.1",
     "framer-motion": "^10.5.0",
     "mongodb": "^6.0.0",
     "next": "latest",
+    "nodemailer": "^6.9.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

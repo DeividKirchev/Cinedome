@@ -4,24 +4,26 @@ import classes from "./Seats.module.css";
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { queryClient } from "../../pages/tickets/[scheduleID]";
-function Seats({ booked = [], scheduleID }) {
-  const [selected, setSelected] = useState([]);
+import BookingForm from "./BookingForm/BookingForm";
+function Seats({ booked = [], scheduleID, selected, setSelected }) {
   const [showForm, setShowForm] = useState(false);
 
   const { mutate, isPending, isError, error } = useMutation({
-    mutationFn: async (seats) => {
+    mutationFn: async (content) => {
       fetch("/api/seats", {
         method: "POST",
-        body: JSON.stringify(seats),
+        body: JSON.stringify(content),
         headers: {
           "Content-Type": "application/json",
         },
       });
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: ["booked", { scheduleid: scheduleID }],
       });
+      setSelected([]);
+      setShowForm(false);
     },
   });
   const seats = [[], [], [], []];
@@ -51,40 +53,60 @@ function Seats({ booked = [], scheduleID }) {
   seats.forEach((item, row) => {
     //console.log(item);
     content.push(
-      <div className={classes.row}>
-        {item.map((i, seat) => (
-          <Seat
-            isTaken={i}
-            isSelected={
-              selected.filter((s) => s.row === row && s.seat === seat)
-                .length === 1
-            }
-            onClick={seatClickHandler.bind(null, row, seat)}
-          />
-        ))}
+      <div key={`row${row}`} className={classes.row}>
+        {item.map((i, seat) => {
+          //console.log(`seatR${row}S${seat}`);
+          return (
+            <Seat
+              key={`seatR${row}S${seat}`}
+              isTaken={i}
+              isSelected={
+                selected.filter((s) => s.row === row && s.seat === seat)
+                  .length === 1
+              }
+              onClick={seatClickHandler.bind(null, row, seat)}
+            />
+          );
+        })}
       </div>
     );
   });
   function bookSeatsHandler() {
-    setShowForm(true);
-
-    mutate({
-      seats: selected,
-    });
+    if (selected.length > 0) {
+      setShowForm(true);
+    }
   }
-  console.log(error);
+  function formSubmitHandler(details) {
+    mutate({ seats: selected, details });
+  }
+  function hideFormHandler() {
+    setShowForm(false);
+  }
   return (
     <div className={classes.seats}>
       {content}
-      <p>SCREEN</p>
-
+      <p key={"screen"}>SCREEN</p>
       <motion.button
-        whileHover={{ scale: 1.2, transition: { type: "spring" } }}
+        whileHover={
+          selected.length !== 0 && {
+            scale: 1.2,
+            transition: { type: "spring" },
+          }
+        }
         className={classes.button}
         onClick={bookSeatsHandler}
+        key={"button"}
+        disabled={selected.length === 0}
       >
         Book seats
       </motion.button>
+      {showForm && (
+        <BookingForm
+          isPending={isPending}
+          hideForm={hideFormHandler}
+          submit={formSubmitHandler}
+        />
+      )}
     </div>
   );
 }

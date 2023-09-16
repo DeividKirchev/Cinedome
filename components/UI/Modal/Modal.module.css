@@ -1,0 +1,36 @@
+.backdrop {
+  z-index: 98;
+  background: #393e46;
+  opacity: 0.8;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 96%;
+  max-width: 800px;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  animation: fromTop 0.5s;
+  display: flex;
+  justify-content: center;
+  min-height: 200px;
+}
+.modal > * {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fromTop {
+  0% {
+    transform: translate(-50%, calc(-50% - 45px));
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}

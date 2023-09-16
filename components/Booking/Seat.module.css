@@ -3,11 +3,29 @@
   height: 50px;
 }
 
-.seat:hover path,
 .selected path {
   fill: #ffa93a;
+}
+
+/* MIN WIDTH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+@media screen and (min-width: 768px) {
+  .seat:hover path {
+    fill: #ffa93a;
+  }
 }
 .taken path,
 .taken:hover path {
   fill: #4ecca3;
+}
+@media screen and (max-width: 550px) {
+  .seat {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 430px) {
+  .seat {
+    width: 30px;
+    height: 30px;
+  }
 }

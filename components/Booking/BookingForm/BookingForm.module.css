@@ -1,0 +1,74 @@
+.button {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  text-decoration: none;
+  background-color: #4ecca3;
+  border-radius: 10px;
+  padding: 5px 20px 2px;
+  font-size: 22px;
+  border: none;
+  width: 200px;
+  cursor: pointer;
+}
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.form label {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 96%;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.form label input {
+  border-radius: 20px;
+  font-size: 24px;
+  padding: 0 20px;
+  line-height: 40px;
+  background-color: #fff;
+  color: #393e46;
+  border-color: #4ecca3;
+}
+.form label.error input {
+  animation: shake 0.5s;
+}
+.form label.error,
+.form label.error input::placeholder {
+  color: #4ecca3;
+}
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #4ecca3;
+  padding-bottom: 20px;
+}
+.info {
+  max-width: 250px;
+  text-align: center;
+  line-height: 1.2;
+  padding: 5px 0;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-7px);
+  }
+  75% {
+    transform: translateX(7px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

@@ -9,6 +9,7 @@ function TicketsPage({ data }) {
     return <></>;
   }
   //console.log(data.schedule);
+  let movie = {};
   try {
     data.schedule = JSON.parse(data.schedule);
     data.schedule = { ...data.schedule, date: new Date(data.schedule.date) };

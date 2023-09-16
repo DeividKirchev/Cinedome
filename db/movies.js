@@ -45,13 +45,21 @@ export async function getBookedForSchedule(scheduleID) {
   return newBooked;
 }
 
-export async function addBookedForSchedule({ seats = [] }) {
+export async function addBookedForSchedule(
+  seats = [],
+  details = { name: "", email: "" }
+) {
   const client = await MongoClient.connect(process.env.ConnString);
   const db = client.db();
 
   const bookedCollection = db.collection("booked");
-
+  const reservationCollection = db.collection("reservation");
   const result = await bookedCollection.insertMany(seats);
+  const ids = result.insertedIds;
+  for (const key in ids) {
+    ids[key] = ids[key].toString();
+  }
+  await reservationCollection.insertOne({ ...details, seats: ids });
   //console.log(result);
   client.close();
   return result;

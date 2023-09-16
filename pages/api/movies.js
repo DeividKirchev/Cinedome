@@ -7,7 +7,7 @@ async function handler(req, res) {
 
     const movieCollection = db.collection("movies");
     const movies = await movieCollection.find();
-    console.log(movies);
+    //console.log(movies);
 
     res.status(200).json({ movies });
   }
