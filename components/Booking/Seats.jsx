@@ -20,7 +20,7 @@ function Seats({ booked = [], scheduleID }) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["booked"],
+        queryKey: ["booked", { scheduleid: scheduleID }],
       });
     },
   });

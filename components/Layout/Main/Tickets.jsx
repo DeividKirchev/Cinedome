@@ -7,7 +7,7 @@ import Loader from "../../UI/Loader";
 function Tickets({ schedule }) {
   const [seatsSelected, setSeatsSelected] = useState([]);
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["booked"],
+    queryKey: ["booked", { scheduleid: schedule.id }],
     queryFn: async ({ signal, queryKey }) =>
       await (await fetch("/api/seats?scheduleID=" + schedule.id)).json(),
     staleTime: 5000,
