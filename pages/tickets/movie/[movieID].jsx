@@ -2,10 +2,7 @@ import Schedule from "../../../components/Layout/Main/Schedule";
 import PageTransition from "../../../components/Layout/PageTransition";
 import { getAllMovies, getAllSchedules } from "../../../db/movies";
 function MovieTicketsPage({ data }) {
-  //console.log(data.schedule);
-  if (!data.schedule || !data.movies) {
-    return <></>;
-  }
+  //console.log(data);
   try {
     data.schedule = JSON.parse(data.schedule);
     data.schedule = data.schedule
@@ -22,16 +19,16 @@ function MovieTicketsPage({ data }) {
     </PageTransition>
   );
 }
-export async function getStaticPaths() {
-  const movies = await getAllMovies();
-  return {
-    fallback: true,
-    paths: movies.map((m) => ({
-      params: { movieID: m.id },
-    })),
-  };
-}
-export async function getStaticProps(context) {
+// export async function getStaticPaths() {
+//   const movies = await getAllMovies();
+//   return {
+//     fallback: true,
+//     paths: movies.map((m) => ({
+//       params: { movieID: m.id },
+//     })),
+//   };
+// }
+export async function getServerSideProps(context) {
   const movies = await getAllMovies();
   const filtered = movies.filter(
     (movie) => movie.id === context.params.movieID

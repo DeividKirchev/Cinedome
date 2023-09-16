@@ -9,16 +9,16 @@ function MovieDetailsPage({ movie }) {
   );
 }
 
-export async function getStaticPaths() {
-  const movies = await getAllMovies();
-  return {
-    fallback: true,
-    paths: movies.map((m) => ({
-      params: { movieID: m.id },
-    })),
-  };
-}
-export async function getStaticProps(context) {
+// export async function getStaticPaths() {
+//   const movies = await getAllMovies();
+//   return {
+//     fallback: true,
+//     paths: movies.map((m) => ({
+//       params: { movieID: m.id },
+//     })),
+//   };
+// }
+export async function getServerSideProps(context) {
   const movies = await getAllMovies();
   const movie = movies.filter((m) => m.id === context.params.movieID)[0];
   //console.log(movies);

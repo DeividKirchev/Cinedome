@@ -21,16 +21,16 @@ function TicketsPage({ data }) {
     </PageTransition>
   );
 }
-export async function getStaticPaths() {
-  const schedule = await getAllSchedules();
-  return {
-    fallback: true,
-    paths: schedule.map((s) => ({
-      params: { scheduleID: s.id },
-    })),
-  };
-}
-export async function getStaticProps(context) {
+// export async function getStaticPaths() {
+//   const schedule = await getAllSchedules();
+//   return {
+//     fallback: true,
+//     paths: schedule.map((s) => ({
+//       params: { scheduleID: s.id },
+//     })),
+//   };
+// }
+export async function getServerSideProps(context) {
   const schedule = await getAllSchedules();
   const filteredSchedule = JSON.stringify(
     schedule.filter((s) => s.id === context.params.scheduleID)[0]
