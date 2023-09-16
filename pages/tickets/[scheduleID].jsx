@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
   );
   return {
     props: { data: { schedule: filteredSchedule } },
-    revalidate: 60,
+    //revalidate: 60,
   };
 }
 export default TicketsPage;

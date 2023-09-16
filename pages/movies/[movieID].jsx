@@ -22,7 +22,10 @@ export async function getServerSideProps(context) {
   const movies = await getAllMovies();
   const movie = movies.filter((m) => m.id === context.params.movieID)[0];
   //console.log(movies);
-  return { props: { movie }, revalidate: 60 };
+  return {
+    props: { movie },
+    //revalidate: 60
+  };
 }
 
 export default MovieDetailsPage;

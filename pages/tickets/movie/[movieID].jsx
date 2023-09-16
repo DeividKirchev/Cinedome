@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
   );
   return {
     props: { data: { movies: filtered, schedule: filteredSchedule } },
-    revalidate: 60,
+    //revalidate: 60,
   };
 }
 export default MovieTicketsPage;
