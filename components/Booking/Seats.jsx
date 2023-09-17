@@ -3,23 +3,30 @@ import Seat from "./Seat";
 import classes from "./Seats.module.css";
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { queryClient } from "../../pages/tickets/[scheduleID]";
+import { client as queryClient } from "../../store/queryClient";
 import BookingForm from "./BookingForm/BookingForm";
 function Seats({ booked = [], scheduleID, selected, setSelected }) {
   const [showForm, setShowForm] = useState(false);
 
-  const { mutate, isPending, isError, error } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (content) => {
-      fetch("/api/seats", {
+      await fetch("/api/seats", {
         method: "POST",
         body: JSON.stringify(content),
         headers: {
           "Content-Type": "application/json",
         },
       });
+      queryClient.setQueryData(
+        ["booked", { scheduleid: scheduleID }],
+        (prev) => {
+          // console.log(old);
+          return { booked: [...prev.booked, ...content.seats] };
+        }
+      );
     },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
         queryKey: ["booked", { scheduleid: scheduleID }],
       });
       setSelected([]);
@@ -81,6 +88,10 @@ function Seats({ booked = [], scheduleID, selected, setSelected }) {
   }
   function hideFormHandler() {
     setShowForm(false);
+  }
+  console.log(isPending);
+  if (isPending) {
+    return <p>Loading...</p>;
   }
   return (
     <div className={classes.seats}>

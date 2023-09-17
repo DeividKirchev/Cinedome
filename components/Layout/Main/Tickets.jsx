@@ -5,12 +5,27 @@ import classes from "./Tickets.module.css";
 import Seats from "../../Booking/Seats";
 import Loader from "../../UI/Loader";
 import MovieInfo from "../../Booking/MovieInfo";
+
+async function fetchScheduled(scheduleID) {
+  const response = await fetch("/api/seats?scheduleID=" + scheduleID);
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while fetching the events");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  const json = await response.json();
+
+  return json;
+}
+
 function Tickets({ schedule }) {
   const [selected, setSelected] = useState([]);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["booked", { scheduleid: schedule.id }],
-    queryFn: async ({ signal, queryKey }) =>
-      await (await fetch("/api/seats?scheduleID=" + schedule.id)).json(),
+    queryFn: () => fetchScheduled(schedule.id),
   });
   let content = <></>;
 

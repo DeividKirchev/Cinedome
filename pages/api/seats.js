@@ -4,9 +4,10 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     const query = req.query;
     const booked = await getBookedForSchedule(query.scheduleID);
+    console.log(booked);
     res.status(200).json({ booked });
   } else if (req.method === "POST") {
-    console.log(req.body);
+    //console.log(req.body);
     //console.log(req.body);
     const { seats, details } = req.body;
 

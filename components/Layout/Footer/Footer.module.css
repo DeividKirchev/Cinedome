@@ -1,0 +1,41 @@
+.footer {
+  padding: 50px 0 80px;
+  background: linear-gradient(to bottom, #393e46, transparent);
+  margin-top: 30px;
+  color: #eee;
+}
+.footer a {
+  color: #4ecca3;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #3fe5ff;
+}
+.footer > div {
+  display: flex;
+  justify-content: space-evenly;
+  animation: fromTop 0.4s;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.left a:first-child {
+  margin-bottom: 40px;
+}
+.right {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+@keyframes fromTop {
+  0% {
+    transform: translatey(-40px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

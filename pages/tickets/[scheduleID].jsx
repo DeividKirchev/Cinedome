@@ -2,8 +2,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import Tickets from "../../components/Layout/Main/Tickets";
 import PageTransition from "../../components/Layout/PageTransition";
 import { getAllSchedules } from "../../db/movies";
-import { QueryClient } from "@tanstack/react-query";
-const client = new QueryClient();
+import { client } from "../../store/queryClient";
+
 function TicketsPage({ data }) {
   if (!data.schedule) {
     return <></>;
@@ -42,4 +42,3 @@ export async function getServerSideProps(context) {
   };
 }
 export default TicketsPage;
-export const queryClient = client;
