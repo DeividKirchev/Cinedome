@@ -1,7 +1,7 @@
 CINEDOME
 A React/NextJS website for a cinema.
 -------------------------------
-[View on Vercel](https://cinedome-one.vercel.app/tickets/65007edf804a97e226b581f0)
+[View on Vercel](https://cinedome-one.vercel.app/)
 ----
 
 The website includes a list of movies (including upcoming ones), a schedule for the next week, and a ticket page where the user can view and book seats.
